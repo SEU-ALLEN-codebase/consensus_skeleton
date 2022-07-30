@@ -200,7 +200,7 @@ int  computeNumberOfBifurcations(const NeuronTree & nt)
 
 	int N_bifs = 0;
 
-	QList<NeuronSWC> list = nt.listNeuron;
+    QList<NeuronSize> list = nt.listNeuron;
 	for (int i=0;i<list.size();i++)
 	{
 		if (childs[i].size()>1)
@@ -1750,8 +1750,8 @@ bool consensus_skeleton_match_center(vector<NeuronTree>  nt_list, QList<NeuronSW
    }
 
 
-//   if (vote_threshold > max_vote_threshold){vote_threshold = max_vote_threshold;}
-   vote_threshold = max_vote_threshold;
+   if (vote_threshold > max_vote_threshold){vote_threshold = max_vote_threshold;}
+//   vote_threshold = max_vote_threshold;
    cout <<"\nVote threshold is set at " << vote_threshold<<endl;
 
    QList<NeuronSWC> merge_result;
