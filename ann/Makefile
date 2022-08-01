@@ -70,6 +70,7 @@ clean:
 	cd test ; $(MAKE) clean
 	cd sample ; $(MAKE) clean
 	cd ann2fig ; $(MAKE) clean
+	cd doc ; $(MAKE) clean
 	cd MS_Win32; $(MAKE) clean
 	cd validate ; $(MAKE) clean
 
@@ -83,6 +84,7 @@ realclean:
 	cd test ; $(MAKE) realclean
 	cd sample ; $(MAKE) realclean
 	cd ann2fig ; $(MAKE) realclean
+	cd doc ; $(MAKE) realclean
 	cd MS_Win32; $(MAKE) realclean
 	cd validate ; $(MAKE) realclean
 

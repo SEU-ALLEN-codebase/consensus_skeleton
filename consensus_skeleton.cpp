@@ -200,7 +200,7 @@ int  computeNumberOfBifurcations(const NeuronTree & nt)
 
 	int N_bifs = 0;
 
-    QList<NeuronSize> list = nt.listNeuron;
+    QList<NeuronSWC> list = nt.listNeuron;
 	for (int i=0;i<list.size();i++)
 	{
 		if (childs[i].size()>1)

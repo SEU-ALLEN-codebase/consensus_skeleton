@@ -72,7 +72,7 @@ linux-g++:
 	$(MAKE) targets \
 	"ANNLIB = libANN.a" \
 	"C++ = g++" \
-	"CFLAGS = -O3 -fPIC" \
+	"CFLAGS = -O3" \
 	"MAKELIB = ar ruv" \
 	"RANLIB = true"
 
@@ -81,7 +81,7 @@ macosx-g++:
 	$(MAKE) targets \
 	"ANNLIB = libANN.a" \
 	"C++ = g++" \
-	"CFLAGS = -O3 -fPIC" \
+	"CFLAGS = -O3" \
 	"MAKELIB = libtool -static -o " \
 	"RANLIB = true"
 
@@ -90,7 +90,7 @@ sunos5:
 	$(MAKE) targets \
 	"ANNLIB = libANN.a" \
 	"C++ = CC" \
-	"CFLAGS = -O -fPIC" \
+	"CFLAGS = -O" \
 	"MAKELIB = ar ruv" \
 	"RANLIB = true"
 
@@ -99,7 +99,7 @@ sunos5-sl:
 	$(MAKE) targets \
 	"ANNLIB = libANN.a" \
 	"C++ = CC" \
-	"CFLAGS = -Kpic -O -fPIC" \
+	"CFLAGS = -Kpic -O" \
 	"MAKELIB = ld -G -o" \
 	"RANLIB = true"
 
