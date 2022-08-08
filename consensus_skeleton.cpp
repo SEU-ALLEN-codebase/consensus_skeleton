@@ -2179,9 +2179,9 @@ bool export_listNeuron_2swc(QList<NeuronSWC> & list, const char* filename)
 			{
 				NeuronSWC curr = list.at(i);
                 if (curr.fea_val.size() ==0){
-                    fprintf(fp,"%d %d %.2f %.2f %.2f %.3f %d %d %d %f\n",curr.n,curr.type,curr.x,curr.y,curr.z,curr.r,curr.pn,0,0,0,0, curr.type);
+                    fprintf(fp,"%d %d %.2f %.2f %.2f %.3f %d %d %d %d %d %f\n",curr.n,curr.type,curr.x,curr.y,curr.z,curr.r,curr.pn,0,0,0,0, curr.type);
                 }else{
-                    fprintf(fp,"%d %d %.2f %.2f %.2f %.3f %d %d %d %f\n",curr.n,curr.type,curr.x,curr.y,curr.z,curr.r,curr.pn,0,0,0,0, curr.fea_val[0]);
+                    fprintf(fp,"%d %d %.2f %.2f %.2f %.3f %d %d %d %d %d %f\n",curr.n,curr.type,curr.x,curr.y,curr.z,curr.r,curr.pn,0,0,0,0, curr.fea_val[0]);
                 }
 
                 }
