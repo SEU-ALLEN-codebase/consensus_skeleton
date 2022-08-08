@@ -485,8 +485,21 @@ bool average_node_position_func(const V3DPluginArgList & input, V3DPluginArgList
         median_neuron= readSWC_file(qs_linker);
     }
     else{
-        cout <<" The first input should be a swc file ( median neuron)." <<endl;
+        cout <<" The first input should be an swc file ( median neuron)." <<endl;
         return false;
+    }
+
+    QString outfileName;
+    if (outlist->size()==0)
+        outfileName = qs_linker + "_median_adjusted.swc";
+    else
+        outfileName = QString(outlist->at(0));
+
+    if (median_neuron.listNeuron.size() == 0)
+    {
+        cout << "input neuron null, saving null swc" << endl;
+        writeSWC_file(outfileName, median_neuron);
+        return true;
     }
 
     qs_linker = QString(inlist->at(1));
@@ -512,15 +525,8 @@ bool average_node_position_func(const V3DPluginArgList & input, V3DPluginArgList
         cout <<" The second input should be a ANO file ( the group of neurons)." <<endl;
     }
 
-    QString outfileName;
-    if (outlist->size()==0)
-        outfileName = qs_linker + "_median_adjusted.swc";
-    else
-        outfileName = QString(outlist->at(0));
-
     NeuronTree median_adjusted = average_node_position(median_neuron, nt_list, distance_threshold );
     if (median_adjusted.listNeuron.size() == 0 ){
-
         cerr<<"error in average_node_position()"<<endl;
         return false;
     }
