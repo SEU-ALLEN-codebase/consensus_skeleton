@@ -50,7 +50,7 @@ win32 {
     INCLUDEPATH += ann/MS_Win32/dll/
 }
 
-VAA3DMAINPATH = ../../../../v3d_external/v3d_main
+VAA3DMAINPATH = D:/Vaa3D/v3d_external/v3d_main
 INCLUDEPATH	+= $$VAA3DMAINPATH/basic_c_fun
 INCLUDEPATH	+= $$VAA3DMAINPATH/neuron_editing
 INCLUDEPATH     += $$VAA3DMAINPATH/common_lib/include/boost/graph

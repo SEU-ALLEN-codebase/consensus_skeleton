@@ -2174,14 +2174,14 @@ bool export_listNeuron_2swc(QList<NeuronSWC> & list, const char* filename)
 
 		if (fn.endsWith(".eswc"))
 		{ // eswc
-			fprintf(fp,"#n,type,x,y,z,radius,parent,seg_id,level,edge_vote\n");   //,vote\n");
+            fprintf(fp,"#n,type,x,y,z,radius,parent,seg_id,level,creatmode,timestamp,tfresindex,edge_vote\n");   //,vote\n");
 			for (int i=0;i<list.size();i++)
 			{
 				NeuronSWC curr = list.at(i);
                 if (curr.fea_val.size() ==0){
-                    fprintf(fp,"%d %d %.2f %.2f %.2f %.3f %d %d %d %f\n",curr.n,curr.type,curr.x,curr.y,curr.z,curr.r,curr.pn,0,0, curr.type);
+                    fprintf(fp,"%d %d %.2f %.2f %.2f %.3f %d %d %d %f\n",curr.n,curr.type,curr.x,curr.y,curr.z,curr.r,curr.pn,0,0,0,0, curr.type);
                 }else{
-                    fprintf(fp,"%d %d %.2f %.2f %.2f %.3f %d %d %d %f\n",curr.n,curr.type,curr.x,curr.y,curr.z,curr.r,curr.pn,0,0, curr.fea_val[0]);
+                    fprintf(fp,"%d %d %.2f %.2f %.2f %.3f %d %d %d %f\n",curr.n,curr.type,curr.x,curr.y,curr.z,curr.r,curr.pn,0,0,0,0, curr.fea_val[0]);
                 }
 
                 }
