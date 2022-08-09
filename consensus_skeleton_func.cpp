@@ -459,13 +459,19 @@ bool average_node_position_func(const V3DPluginArgList & input, V3DPluginArgList
 
     //parsing parameters
     V3DLONG distance_threshold= 0;
+    V3DLONG soma_radius = 0;
     vector<char*> * paras = (vector<char*> *)(input.at(1).p);
-    if (paras->size()==1)
+    if (paras->size() >= 1)
     {
         distance_threshold = atoi(paras->at(0));
         cout<<"distance_threshold = "<<distance_threshold<<endl;
     }
-    else
+    if (paras->size() >= 2)
+    {
+        soma_radius = atoi(paras->at(1));
+        cout << "soma_radius = " << soma_radius << endl;
+    }
+    if (paras->size() > 2)
     {
         cerr<<"Too many parameters"<<endl;
         return false;
@@ -525,7 +531,7 @@ bool average_node_position_func(const V3DPluginArgList & input, V3DPluginArgList
         cout <<" The second input should be a ANO file ( the group of neurons)." <<endl;
     }
 
-    NeuronTree median_adjusted = average_node_position(median_neuron, nt_list, distance_threshold );
+    NeuronTree median_adjusted = average_node_position(median_neuron, nt_list, distance_threshold, soma_radius);
     if (median_adjusted.listNeuron.size() == 0 ){
         cerr<<"error in average_node_position()"<<endl;
         return false;

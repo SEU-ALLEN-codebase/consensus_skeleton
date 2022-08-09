@@ -7,7 +7,7 @@
 using namespace std;
 
 int median_swc(vector<NeuronTree> nt_listm, QString outputFileName);
-NeuronTree average_node_position( NeuronTree median_neuron,vector<NeuronTree> nt_list, double distance_threshold);
+NeuronTree average_node_position( NeuronTree median_neuron,vector<NeuronTree> nt_list, double distance_threshold, int soma_radius = 0);
 
 
 #endif // MEDIAN_SWC_H

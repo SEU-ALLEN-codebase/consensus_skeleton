@@ -189,9 +189,26 @@ int median_swc(vector<NeuronTree> nt_list, QString outputFileName){
 
 
 
-NeuronTree average_node_position( NeuronTree median_neuron,vector<NeuronTree> nt_list, double distance_threshold)
+NeuronTree average_node_position( NeuronTree median_neuron,vector<NeuronTree> nt_list, double distance_threshold, int soma_radius)
 {
     NeuronTree median_adjusted = median_neuron;
+    // find soma location in the nt_list
+    // the first soma found
+    Point3D soma={0};
+    for (int i = 0; i < nt_list.size(); ++i)
+    {
+        bool flag = false;
+        for (int j = 0; j < nt_list[i].listNeuron.size(); ++j)
+            if (nt_list[i].listNeuron[j].parent == -1)
+            {
+                soma.x = nt_list[i].listNeuron[j].x;
+                soma.y = nt_list[i].listNeuron[j].y;
+                soma.z = nt_list[i].listNeuron[j].z;
+                flag = true;
+                break;
+            }
+        if (flag) break;
+    }
     for (int i = 0; i <median_neuron.listNeuron.size(); i++)
     {
         NeuronSWC s = median_neuron.listNeuron.at(i);
@@ -199,7 +216,10 @@ NeuronTree average_node_position( NeuronTree median_neuron,vector<NeuronTree> nt
         cur.x = s.x;
         cur.y = s.y;
         cur.z = s.z;
-
+        double to_soma_dist = PointDistance(cur, soma);
+        double thr = distance_threshold;
+        if (soma_radius > 0 && to_soma_dist <= soma_radius)
+            thr = soma_radius;
         vector<Point3D> cluster;
         for (int ii = 0; ii < nt_list.size(); ii++)
         {
@@ -220,7 +240,7 @@ NeuronTree average_node_position( NeuronTree median_neuron,vector<NeuronTree> nt
                     closest_p = p;
                 }
             }
-            if (min_dis < distance_threshold)
+            if (min_dis < thr)
             {//if min_dis > distance_threshold,too far away, won't count to average
                 cluster.push_back(closest_p);
             }
