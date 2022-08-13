@@ -1249,7 +1249,10 @@ void trim_unconfident_branches(QList<NeuronSWC> &merge_result,int vote_threshold
 		//cout <<"cur = "<<cur<<endl;
 		deleteFlag[cur] = 1;
 
-		int pn_pos = hashNeuron.value(merge_result[cur].pn);
+        int pn = merge_result[cur].pn;
+        if (pn < 0)
+            continue;
+        int pn_pos = hashNeuron.value(pn);
 		numOfChildren[pn_pos]--;
         if (numOfChildren[pn_pos] == 0 && merge_result[cur].fea_val[0]< vote_threshold)
 			stack.push(pn_pos);
